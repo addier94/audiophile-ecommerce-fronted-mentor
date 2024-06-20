@@ -1,7 +1,9 @@
+import { Navbar } from "./components/common/Navbar/Navbar";
+
 function App() {
   return (
     <>
-      <div className="">body content</div>
+      <Navbar />
     </>
   );
 }
