@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],
       },
+      colors: {
+        "gray-main": "#f1f1f1",
+        "gray2-main": "#979797",
+      },
     },
   },
   plugins: [],

@@ -1,16 +1,12 @@
 import { Logo } from "../Logo";
+import { BarMenu } from "./BarMenu";
 
 export const Navbar = () => {
   return (
     <header className="bg-black h-[90px] px-4">
       <nav className="h-full flex justify-between items-center max-w-screen-lg lg:mx-auto">
-        <section className="flex gap-8 lg:gap-0">
-          <button className="lg:hidden">
-            <img
-              src="/src/assets/shared/tablet/icon-hamburger.svg"
-              alt="Hamburger icon"
-            />
-          </button>
+        <section className="flex items-center gap-8 lg:gap-0">
+          <BarMenu />
           <Logo className="hidden sm:block" />
         </section>
 
