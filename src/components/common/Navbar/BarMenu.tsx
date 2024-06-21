@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AsideNavbar } from "./AsideNavbar";
 
 export const BarMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

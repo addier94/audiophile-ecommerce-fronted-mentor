@@ -3,8 +3,8 @@ import { BarMenu } from "./BarMenu";
 
 export const Navbar = () => {
   return (
-    <header className="bg-black h-[90px] px-4">
-      <nav className="h-full flex justify-between items-center max-w-screen-lg lg:mx-auto">
+    <header className="h-[90px] relative z-50 ">
+      <nav className="h-full flex justify-between border-b-[1px] border-b-white/20 items-center max-w-screen-lg px-4 lg:mx-auto">
         <section className="flex items-center gap-8 lg:gap-0">
           <BarMenu />
           <Logo className="hidden sm:block" />
@@ -14,16 +14,48 @@ export const Navbar = () => {
           <Logo className="sm:hidden" />
           <ul className="hidden lg:flex text-white list-none gap-9 text-[13px] font-bold">
             <li>
-              <a href="#">HOME</a>
+              <a
+                className="
+                  duration-150
+                  hover:text-yellow-main
+                "
+                href="#"
+              >
+                HOME
+              </a>
             </li>
             <li>
-              <a href="#">HEADPHONES</a>
+              <a
+                className="
+                    duration-150
+                  hover:text-yellow-main
+                "
+                href="#"
+              >
+                HEADPHONES
+              </a>
             </li>
             <li>
-              <a href="#">SPEAKERS</a>
+              <a
+                className="
+                    duration-150
+                  hover:text-yellow-main
+                "
+                href="#"
+              >
+                SPEAKERS
+              </a>
             </li>
             <li>
-              <a href="#">EARPHONES</a>
+              <a
+                className="
+                  duration-150
+                hover:text-yellow-main
+                "
+                href="#"
+              >
+                EARPHONES
+              </a>
             </li>
           </ul>
         </section>
