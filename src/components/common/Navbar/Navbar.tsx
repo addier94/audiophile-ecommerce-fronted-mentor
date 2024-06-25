@@ -12,12 +12,12 @@ export const Navbar = () => {
 
         <section className="flex items-center gap-8 lg:gap-0">
           <Logo className="sm:hidden" />
-          <ul className="hidden lg:flex text-white list-none gap-9 text-[13px] font-bold">
+          <ul className="hidden lg:flex text-white list-none gap-9 text-subtitle">
             <li>
               <a
                 className="
                   duration-150
-                  hover:text-yellow-main
+                  hover:text-primary
                 "
                 href="#"
               >
@@ -28,7 +28,7 @@ export const Navbar = () => {
               <a
                 className="
                     duration-150
-                  hover:text-yellow-main
+                  hover:text-primary
                 "
                 href="#"
               >
@@ -39,7 +39,7 @@ export const Navbar = () => {
               <a
                 className="
                     duration-150
-                  hover:text-yellow-main
+                  hover:text-primary
                 "
                 href="#"
               >
@@ -50,7 +50,7 @@ export const Navbar = () => {
               <a
                 className="
                   duration-150
-                hover:text-yellow-main
+                hover:text-primary
                 "
                 href="#"
               >

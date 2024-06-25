@@ -1,3 +1,5 @@
+import Button from "../../../components/common/Button";
+
 export const Header = () => {
   return (
     <>
@@ -6,7 +8,7 @@ export const Header = () => {
           h-[600px]
           sm:h-[729px]
           -mt-[90px]
-          bg-black-main
+          bg-black/90
           relative
           z-0
         "
@@ -45,7 +47,7 @@ export const Header = () => {
             className="
                 w-[328px]
                 h-[290px]
-                sm:w-[379px]
+                sm:w-[400px]
                 sm:h-[346px]
                 flex
                 flex-col
@@ -63,54 +65,40 @@ export const Header = () => {
                 lg:text-left
               "
             >
-              <h3
+              <p
                 className="
                   text-white/50
-                  tracking-[10px]
-                  text-[14px]
+                  text-overline
                   mb-4
                 "
               >
                 NEW PRODUCT
-              </h3>
-              <h1
+              </p>
+              <h2
                 className="
                   text-white
-                  font-bold
-                  text-[36px]
-                  leading-10
-                  sm:leading-[3.5rem]
-                  sm:text-[56px]
+                  text-h3
+                  sm:text-h1
                 "
               >
                 xxx99 MARK II HEADPHONES
-              </h1>
+              </h2>
             </section>
             <p
               className="
-                text-[15px]
                 text-white/75
+                sm:px-3
+                lg:pl-0
+                lg:pr-6
                 text-center
-                font-medium
-                sm:px-1
                 lg:text-left
+                text-body
               "
             >
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
-            <button
-              className="
-              text-white
-              text-[13px]
-              font-bold
-              bg-yellow-main
-              py-4
-              px-9
-            "
-            >
-              SEE PRODUCT
-            </button>
+            <Button variant="primary">See Product</Button>
           </article>
         </div>
       </header>
