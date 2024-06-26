@@ -44,4 +44,3 @@ export const Product2 = () => {
     </article>
   );
 };
-// absolute inset-0 h-full w-full object-cover
