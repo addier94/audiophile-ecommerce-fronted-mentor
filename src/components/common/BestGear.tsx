@@ -2,7 +2,7 @@ export const BestGear = () => {
   return (
     <article
       className="
-        mb-4
+        my-24
         h-[698px]
         sm:h-[633px]
         flex

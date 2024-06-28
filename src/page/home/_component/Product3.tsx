@@ -4,7 +4,6 @@ export const Product3 = () => {
   return (
     <article
       className="
-      mb-4
       h-[424px]
       sm:h-[320px]
       flex
