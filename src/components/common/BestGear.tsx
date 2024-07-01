@@ -1,15 +1,19 @@
-export const BestGear = () => {
+import clsx from "clsx";
+
+export const BestGear = ({ className }: { className?: string }) => {
   return (
     <article
-      className="
-        my-24
+      className={clsx(
+        `
         h-[698px]
         sm:h-[633px]
         flex
         lg:h-[588px]
         flex-col
         lg:flex-row-reverse
-      "
+      `,
+        className
+      )}
     >
       <section
         className="

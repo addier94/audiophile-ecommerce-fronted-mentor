@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Button from "../Button";
 
-export const CategoriesList = ({ className }: { className: string }) => {
+export const CategoriesList = ({ className }: { className?: string }) => {
   return (
     <nav
       className={clsx(
@@ -11,8 +11,6 @@ export const CategoriesList = ({ className }: { className: string }) => {
         h-full
         rounded-br-lg
         rounded-bl-lg
-        py-8
-        sm:py-12
         `,
         className
       )}

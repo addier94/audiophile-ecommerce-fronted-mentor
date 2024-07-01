@@ -8,9 +8,9 @@ interface ContainerProps {
 
 const Container: React.FC<ContainerProps> = ({ className, children }) => {
   return (
-    <article className={clsx("max-w-screen-lg mx-auto px-4", className)}>
+    <div className={clsx("max-w-screen-lg mx-auto px-4", className)}>
       {children}
-    </article>
+    </div>
   );
 };
 
