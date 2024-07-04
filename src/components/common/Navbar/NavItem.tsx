@@ -1,28 +1,22 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
-import { helpers } from "../../../utils/helpers";
 
-interface Link {
-  id: number;
-  name: string;
+import { getNavList } from "../../../actions/getNavList";
+import { Product } from "../../../typescript/product";
+import { NavLink } from "react-router-dom";
+
+interface NavItemProps {
+  className?: string;
 }
 
-const links: Link[] = [
-  {
-    id: 2,
-    name: "Headphones",
-  },
-  {
-    id: 3,
-    name: "Speakers",
-  },
-  {
-    id: 4,
-    name: "Earphones",
-  },
-];
+const css = `
+  duration-150
+  uppercase
+  hover:text-primary
+`;
 
-export const NavItem = ({ className }: { className: string }) => {
+export const NavItem = ({ className }: NavItemProps) => {
+  const categories: Product[] = getNavList();
+
   return (
     <ul
       className={clsx(
@@ -34,37 +28,28 @@ export const NavItem = ({ className }: { className: string }) => {
         `
       )}
     >
-      <NavItemLink />
+      <NavLink
+        className={({ isActive }) => clsx(css, isActive && "text-primary")}
+        to="/"
+      >
+        Home
+      </NavLink>
+      {categories.map((product) => (
+        <NavItemLink key={product.id} {...product} />
+      ))}
     </ul>
   );
 };
 
-const NavItemLink = () => {
+const NavItemLink = ({ category }: Product) => {
   return (
-    <>
-      <Link
-        className="
-        duration-150
-        uppercase
-        hover:text-primary
-      "
-        to="/"
+    <li>
+      <NavLink
+        to={`/category/${category}`}
+        className={({ isActive }) => clsx(css, isActive && "text-primary")}
       >
-        Home
-      </Link>
-      {links.map((item) => (
-        <Link
-          key={item.id}
-          className="
-            duration-150
-            uppercase
-            hover:text-primary
-          "
-          to={`/category/${helpers.slug(item.name)}`}
-        >
-          {item.name}
-        </Link>
-      ))}
-    </>
+        {category}
+      </NavLink>
+    </li>
   );
 };

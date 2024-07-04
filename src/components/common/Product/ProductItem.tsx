@@ -1,7 +1,13 @@
 import clsx from "clsx";
 import Button from "../Button";
+import { Image, Product } from "../../../typescript/product";
 
-export const ProductItem = ({ className }: { className?: string }) => {
+interface ProductItemProps {
+  className?: string;
+  product: Product;
+}
+
+export const ProductItem = ({ className, product }: ProductItemProps) => {
   return (
     <article
       className={clsx(
@@ -11,7 +17,6 @@ export const ProductItem = ({ className }: { className?: string }) => {
         lg:h-[560px]
         flex
         flex-col
-        gap-6
         lg:flex-row
       `,
         className
@@ -25,7 +30,8 @@ export const ProductItem = ({ className }: { className?: string }) => {
         <figure
           className="
             w-full
-            h-full
+            h-[352px]
+            lg:h-full
             rounded-md 
             overflow-hidden
             relative
@@ -39,38 +45,43 @@ export const ProductItem = ({ className }: { className?: string }) => {
                 h-full
                 object-contain
               "
+            image={product.image}
           />
         </figure>
       </section>
       <section
         className="
             flex-1
-            lg:flex 
+            flex 
+            items-end
             lg:items-center
             lg:justify-end
           "
       >
         <div
-          className="
-              h-full
-              flex
-              flex-col
-              justify-between
-              lg:w-[445px]
-              lg:h-[343px]
-            "
+          className={`
+            ${product.new ? "h-[340px]" : "h-[297px]"}
+            ${product.new ? "sm:h-[302px]" : "sm:h-[267px]"}
+            ${product.new ? "lg:h-[343px]" : "lg:h-[308px]"}
+            flex
+            flex-col
+            justify-between
+            lg:w-[445px]
+          `}
         >
-          <p
-            className="
-              text-overline
-              uppercase
-              text-center
-              lg:text-left
-              text-primary
-            "
-          >
-            new Product
-          </p>
+          {product.new && (
+            <p
+              className="
+                text-overline
+                uppercase
+                text-center
+                lg:text-left
+                text-primary
+              "
+            >
+              new Product
+            </p>
+          )}
           <h4
             className="
               uppercase
@@ -80,7 +91,7 @@ export const ProductItem = ({ className }: { className?: string }) => {
               sm:text-h2
             "
           >
-            xx99 Mark II Headphones
+            {product.name}
           </h4>
           <p
             className="
@@ -92,9 +103,7 @@ export const ProductItem = ({ className }: { className?: string }) => {
               lg:px-0
             "
           >
-            The new XX99 Mark II headphones is the pinnacle of pristine audio.
-            It redefines your premium headphone experience by reproducing the
-            balanced depth and precision of studio-quality sound.
+            {product.description}
           </p>
           <div className="text-center lg:text-left">
             <Button variant="primary">See Product</Button>
@@ -105,11 +114,15 @@ export const ProductItem = ({ className }: { className?: string }) => {
   );
 };
 
-const ResponseImage = ({ className }: { className: string }) => {
+interface ResponseImageProps {
+  className?: string;
+  image: Image;
+}
+const ResponseImage = ({ className, image }: ResponseImageProps) => {
   return (
     <>
       <img
-        src="/src/assets/product-xx99-mark-two-headphones/mobile/image-product.jpg"
+        src={image.mobile}
         alt=""
         className={clsx(
           `
@@ -119,7 +132,7 @@ const ResponseImage = ({ className }: { className: string }) => {
         )}
       />
       <img
-        src="/src/assets/product-xx99-mark-two-headphones/tablet/image-product.jpg"
+        src={image.tablet}
         alt=""
         className={clsx(
           `
@@ -131,7 +144,7 @@ const ResponseImage = ({ className }: { className: string }) => {
         )}
       />
       <img
-        src="/src/assets/product-xx99-mark-two-headphones/desktop/image-product.jpg"
+        src={image.desktop}
         alt=""
         className={clsx(
           `

@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
+
 import { Header } from "../../components/common/Header";
 import { ProductItem } from "../../components/common/Product/ProductItem";
 import Container from "../../components/common/Container";
 import { BestGear } from "../../components/common/BestGear";
 import { CategoriesList } from "../../components/common/Navbar/CategoriesList";
+import getByCategory from "../../actions/getByCategory";
 
 export const CategoryId = () => {
-  const { name } = useParams();
+  const { categoryName } = useParams();
+  const categories = getByCategory(categoryName!);
 
   return (
     <article
@@ -14,7 +17,7 @@ export const CategoryId = () => {
       flex-grow
     "
     >
-      <Header name={name} />
+      <Header name={categoryName} />
       <Container
         className="
         flex
@@ -23,9 +26,15 @@ export const CategoryId = () => {
         py-16
       "
       >
-        <ProductItem />
-        <ProductItem className="lg:flex-row-reverse" />
-        <ProductItem />
+        {categories.length > 0 &&
+          categories.map((product, index) => (
+            <ProductItem
+              key={product.id}
+              product={product}
+              className={index % 2 === 1 ? "lg:flex-row-reverse" : ""}
+            />
+          ))}
+        {/* <ProductItem className="lg:flex-row-reverse" /> */}
         <CategoriesList />
         <BestGear />
       </Container>

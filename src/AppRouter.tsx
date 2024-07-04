@@ -16,7 +16,7 @@ export default function AppRouter() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/category/:name" element={<CategoryId />} />
+        <Route path="/category/:categoryName" element={<CategoryId />} />
       </Routes>
       {/* <Outlet /> */}
       <Footer />
