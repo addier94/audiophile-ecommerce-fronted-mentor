@@ -6,10 +6,14 @@ import Container from "../../components/common/Container";
 import { BestGear } from "../../components/common/BestGear";
 import { CategoriesList } from "../../components/common/Navbar/CategoriesList";
 import getByCategory from "../../actions/getByCategory";
+import { useEffect } from "react";
 
 export const CategoryId = () => {
   const { categoryName } = useParams();
   const categories = getByCategory(categoryName!);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [categoryName]);
 
   return (
     <article

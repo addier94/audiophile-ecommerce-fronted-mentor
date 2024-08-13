@@ -4,7 +4,14 @@ export interface Image {
   desktop: string;
 }
 
-export interface Includes {
+export interface CategoryImage {
+  png: string;
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+export interface IncludeItem {
   quantity: number;
   item: string;
 }
@@ -15,7 +22,7 @@ export interface Gallery {
   third: Image;
 }
 
-export interface Other {
+export interface OtherProduct {
   slug: string;
   name: string;
   image: Image;
@@ -27,12 +34,12 @@ export interface Product {
   name: string;
   image: Image;
   category: string;
-  categoryImage: Image;
+  categoryImage: CategoryImage;
   new: boolean;
   price: number;
   description: string;
   features: string;
-  includes: Includes[];
+  includes: IncludeItem[];
   gallery: Gallery;
-  others: Other[];
+  others: OtherProduct[];
 }

@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import Button from "../Button";
+import { getNavList } from "../../../actions/getNavList";
+import { Link } from "react-router-dom";
 
 export const CategoriesList = ({ className }: { className?: string }) => {
+  const navList = getNavList();
+
   return (
     <nav
       className={clsx(
@@ -26,48 +30,56 @@ export const CategoriesList = ({ className }: { className?: string }) => {
         justify-between
       "
       >
-        <article
-          className="
-          w-full
-          h-[217px]
-          flex
-          relative
-        "
-        >
-          <img
-            src="/src/assets/shared/desktop/image-category-thumbnail-headphones.png"
-            alt="headphones"
-            className="w-[148px] absolute top-0 left-2/4 -translate-x-2/4"
-          />
-          <div
+        {navList.map((nav) => (
+          <li
+            key={nav.id}
             className="
-            bg-gray-light
-            h-[165px]
-            flex
-            self-end
-            flex-col
-            pt-20
-            justify-center
-            items-center
-            py-5
-            gap-[10px]
-            w-full
-            rounded-md
-          "
+              w-full
+              h-[217px]
+              flex
+              relative
+            "
           >
-            <span className="font-bold text-[15px]">HEADPHONES</span>
-            <p className="flex gap-2 items-center">
-              <Button variant="info" className="w-auto h-auto">
-                Shop
-              </Button>
-              <img
-                src="/src/assets/shared/desktop/icon-arrow-right.svg"
-                alt="arrow right icon"
-              />
-            </p>
-          </div>
-        </article>
-        <article
+            <img
+              src={nav.categoryImage.png}
+              alt="headphones"
+              className="w-[148px] absolute top-0 left-2/4 -translate-x-2/4"
+            />
+            <div
+              className="
+                bg-gray-light
+                h-[165px]
+                flex
+                self-end
+                flex-col
+                pt-20
+                justify-center
+                items-center
+                py-5
+                gap-[10px]
+                w-full
+                rounded-md
+              "
+            >
+              <span className="font-bold text-[15px] uppercase">
+                {nav.category}
+              </span>
+              <Link
+                to={`/category/${nav.category}`}
+                className="flex gap-2 items-center"
+              >
+                <Button variant="info" className="w-auto h-auto">
+                  Shop
+                </Button>
+                <img
+                  src="/src/assets/shared/desktop/icon-arrow-right.svg"
+                  alt="arrow right icon"
+                />
+              </Link>
+            </div>
+          </li>
+        ))}
+        {/* <article
           className="
           w-full
           h-[217px]
@@ -148,7 +160,7 @@ export const CategoriesList = ({ className }: { className?: string }) => {
               />
             </p>
           </div>
-        </article>
+        </article> */}
       </ul>
     </nav>
   );

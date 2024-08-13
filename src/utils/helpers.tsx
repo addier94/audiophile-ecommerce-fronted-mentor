@@ -18,4 +18,15 @@ export class helpers {
 
     return text.substring(0, limit) + "...";
   }
+
+  static formatMoney(
+    amount: number,
+    currency: string = "USD",
+    locales: string = "en-US"
+  ): string {
+    return new Intl.NumberFormat(locales, {
+      style: "currency",
+      currency,
+    }).format(amount);
+  }
 }

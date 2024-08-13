@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Button from "../Button";
 import { Image, Product } from "../../../typescript/product";
+import { useNavigate } from "react-router-dom";
 
 interface ProductItemProps {
   className?: string;
@@ -8,30 +9,30 @@ interface ProductItemProps {
 }
 
 export const ProductItem = ({ className, product }: ProductItemProps) => {
+  const navigate = useNavigate();
+
   return (
     <article
       className={clsx(
         `
-        h-[724px]
-        sm:h-[706px]
+        max-h-[724px]
         lg:h-[560px]
         flex
         flex-col
+        gap-5
         lg:flex-row
+        lg:justify-between
       `,
         className
       )}
     >
-      <section
-        className="
-          flex-1
-        "
-      >
+      <section>
         <figure
           className="
             w-full
             h-[352px]
-            lg:h-full
+            lg:h-[560px]
+            lg:w-[540px]
             rounded-md 
             overflow-hidden
             relative
@@ -51,20 +52,16 @@ export const ProductItem = ({ className, product }: ProductItemProps) => {
       </section>
       <section
         className="
-            flex-1
             flex 
             items-end
             lg:items-center
-            lg:justify-end
           "
       >
         <div
           className={`
-            ${product.new ? "h-[340px]" : "h-[297px]"}
-            ${product.new ? "sm:h-[302px]" : "sm:h-[267px]"}
-            ${product.new ? "lg:h-[343px]" : "lg:h-[308px]"}
             flex
             flex-col
+            gap-5
             justify-between
             lg:w-[445px]
           `}
@@ -106,7 +103,12 @@ export const ProductItem = ({ className, product }: ProductItemProps) => {
             {product.description}
           </p>
           <div className="text-center lg:text-left">
-            <Button variant="primary">See Product</Button>
+            <Button
+              onClick={() => navigate(`/product/${product.slug}`)}
+              variant="primary"
+            >
+              See Product
+            </Button>
           </div>
         </div>
       </section>
