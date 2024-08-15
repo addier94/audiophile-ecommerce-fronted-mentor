@@ -15,7 +15,7 @@ export const BarMenu = () => {
         className="lg:hidden cursor-pointer"
         onClick={toggleMenu}
       />
-      <AsideNavbar isOpen={isMenuOpen} />
+      <AsideNavbar isOpen={isMenuOpen} closeMenu={() => setIsMenuOpen(false)} />
     </>
   );
 };

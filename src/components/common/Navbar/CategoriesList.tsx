@@ -1,10 +1,24 @@
 import clsx from "clsx";
 import Button from "../Button";
 import { getNavList } from "../../../actions/getNavList";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const CategoriesList = ({ className }: { className?: string }) => {
+interface CategoriesListProps {
+  closeMenu: () => void;
+  className?: string;
+}
+
+export const CategoriesList = ({
+  className,
+  closeMenu,
+}: CategoriesListProps) => {
   const navList = getNavList();
+  const navigate = useNavigate();
+
+  const goTo = (path: string) => {
+    closeMenu();
+    navigate(path);
+  };
 
   return (
     <nav
@@ -64,8 +78,8 @@ export const CategoriesList = ({ className }: { className?: string }) => {
               <span className="font-bold text-[15px] uppercase">
                 {nav.category}
               </span>
-              <Link
-                to={`/category/${nav.category}`}
+              <div
+                onClick={() => goTo(`/category/${nav.category}`)}
                 className="flex gap-2 items-center"
               >
                 <Button variant="info" className="w-auto h-auto">
@@ -75,92 +89,10 @@ export const CategoriesList = ({ className }: { className?: string }) => {
                   src="/src/assets/shared/desktop/icon-arrow-right.svg"
                   alt="arrow right icon"
                 />
-              </Link>
+              </div>
             </div>
           </li>
         ))}
-        {/* <article
-          className="
-          w-full
-          h-[217px]
-          flex
-          relative
-        "
-        >
-          <img
-            src="/src/assets/shared/desktop/image-category-thumbnail-speakers.png"
-            alt="headphones"
-            className="w-[156px] absolute top-0 left-2/4 -translate-x-2/4"
-          />
-          <div
-            className="
-            bg-gray-light
-            h-[165px]
-            flex
-            self-end
-            flex-col
-            pt-20
-            justify-center
-            items-center
-            py-5
-            gap-[10px]
-            w-full
-            border-md
-          "
-          >
-            <span className="font-bold text-[15px]">SPEAKERS</span>
-            <p className="flex gap-2 items-center">
-              <Button variant="info" className="w-auto h-auto">
-                Shop
-              </Button>
-              <img
-                src="/src/assets/shared/desktop/icon-arrow-right.svg"
-                alt="arrow right icon"
-              />
-            </p>
-          </div>
-        </article>
-        <article
-          className="
-          w-full
-          h-[217px]
-          flex
-          relative
-        "
-        >
-          <img
-            src="/src/assets/shared/desktop/image-category-thumbnail-earphones.png"
-            alt="headphones"
-            className="w-[172px] absolute top-0 left-2/4 -translate-x-2/4"
-          />
-          <div
-            className="
-            bg-gray-light
-            h-[165px]
-            flex
-            self-end
-            flex-col
-            pt-20
-            justify-center
-            items-center
-            py-5
-            gap-[10px]
-            w-full
-            border-md
-          "
-          >
-            <span className="font-bold text-[15px]">EARPHONES</span>
-            <p className="flex gap-2 items-center">
-              <Button variant="info" className="w-auto h-auto">
-                Shop
-              </Button>
-              <img
-                src="/src/assets/shared/desktop/icon-arrow-right.svg"
-                alt="arrow right icon"
-              />
-            </p>
-          </div>
-        </article> */}
       </ul>
     </nav>
   );

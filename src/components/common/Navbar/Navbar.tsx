@@ -1,5 +1,6 @@
 import { Logo } from "../Logo";
 import { BarMenu } from "./BarMenu";
+import { CartIcon } from "./CartIcon";
 import { NavItem } from "./NavItem";
 
 export const Navbar = () => {
@@ -22,13 +23,7 @@ export const Navbar = () => {
           />
         </section>
 
-        <aside>
-          <img
-            src="/src/assets/shared/desktop/icon-cart.svg"
-            alt="Cart Icon"
-            className="cursor-pointer"
-          />
-        </aside>
+        <CartIcon />
       </nav>
     </div>
   );
