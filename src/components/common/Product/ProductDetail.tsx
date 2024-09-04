@@ -4,6 +4,9 @@ import { Image, OtherProduct, Product } from "../../../typescript/product";
 import { useNavigate } from "react-router-dom";
 import { ProductQty } from "./ProductQty";
 import { helpers } from "../../../utils/helpers";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../../features/cartSlice";
+import { useProductQty } from "../../../hooks/useProductQty";
 
 interface ProductItemProps {
   className?: string;
@@ -22,7 +25,7 @@ export const ProductDetail = ({ product, className }: ProductItemProps) => {
         )}
       >
         <ProductImage image={product.image} />
-        <ProductDetails product={product} navigate={navigate} />
+        <SingleProduct product={product} navigate={navigate} />
       </article>
       <article className="flex flex-col gap-14 py-14 lg:flex-row">
         <ProductFeatures features={product.features} />
@@ -43,39 +46,57 @@ const ProductImage = ({ image }: { image: Image }) => (
   </figure>
 );
 
-const ProductDetails = ({
+const SingleProduct = ({
   product,
-  navigate,
 }: {
   product: Product;
   navigate: ReturnType<typeof useNavigate>;
-}) => (
-  <section className="flex items-center">
-    <div className="flex gap-4 flex-col lg:w-[445px]">
-      {product.new && (
-        <p className="text-overline uppercase lg:text-left text-primary">
-          new Product
+}) => {
+  const dispatch = useDispatch();
+
+  const { productItem, incrementQty, decrementQty, handleChange } =
+    useProductQty({
+      id: product.id,
+      image: product.image.mobile,
+      name: product.name,
+      price: product.price,
+      totalPrice: product.price,
+      quantity: 1,
+    });
+
+  return (
+    <section className="flex items-center">
+      <div className="flex gap-4 flex-col lg:w-[445px]">
+        {product.new && (
+          <p className="text-overline uppercase lg:text-left text-primary">
+            new Product
+          </p>
+        )}
+        <h4 className="uppercase text-h4 lg:text-left lg:text-h2">
+          {product.name}
+        </h4>
+        <p className="text-body text-black/50 lg:text-left lg:px-0">
+          {product.description}
         </p>
-      )}
-      <h4 className="uppercase text-h4 lg:text-left lg:text-h2">
-        {product.name}
-      </h4>
-      <p className="text-body text-black/50 lg:text-left lg:px-0">
-        {product.description}
-      </p>
-      <p className="text-h6">{helpers.formatMoney(product.price)}</p>
-      <div className="flex gap-4 items-center">
-        <ProductQty />
-        <Button
-          onClick={() => navigate(`/product/${product.slug}`)}
-          variant="primary"
-        >
-          Add to Cart
-        </Button>
+        <p className="text-h6">{helpers.formatMoney(productItem.totalPrice)}</p>
+        <div className="flex gap-4 items-center">
+          <ProductQty
+            qty={productItem.quantity}
+            incrementQty={incrementQty}
+            decrementQty={decrementQty}
+            handleChange={handleChange}
+          />
+          <Button
+            onClick={() => dispatch(addItemToCart(productItem))}
+            variant="primary"
+          >
+            Add to Cart
+          </Button>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const ProductFeatures = ({ features }: { features: string }) => {
   const featuresWithLineBreaks = features.replace(/\n/g, "<br />");

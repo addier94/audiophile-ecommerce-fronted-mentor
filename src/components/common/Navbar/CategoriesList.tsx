@@ -4,7 +4,7 @@ import { getNavList } from "../../../actions/getNavList";
 import { useNavigate } from "react-router-dom";
 
 interface CategoriesListProps {
-  closeMenu: () => void;
+  closeMenu?: () => void;
   className?: string;
 }
 
@@ -16,7 +16,9 @@ export const CategoriesList = ({
   const navigate = useNavigate();
 
   const goTo = (path: string) => {
-    closeMenu();
+    if (closeMenu) {
+      closeMenu();
+    }
     navigate(path);
   };
 

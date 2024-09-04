@@ -12,6 +12,7 @@ export default function AppRouter() {
         min-h-screen
         flex
         flex-col
+        overflow-hidden
       "
     >
       <Navbar />

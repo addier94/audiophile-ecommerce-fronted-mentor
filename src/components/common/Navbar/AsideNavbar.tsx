@@ -13,7 +13,6 @@ export const AsideNavbar = ({ isOpen, closeMenu }: AsideNavbarProps) => {
     const toggleClasses = (add: boolean) => {
       const method = add ? "add" : "remove";
       body.classList[method](
-        "z-10",
         "relative",
         "before:content-['']",
         "before:fixed",
@@ -34,6 +33,7 @@ export const AsideNavbar = ({ isOpen, closeMenu }: AsideNavbarProps) => {
     <article
       className={`
           absolute 
+          z-20
           left-0 
           top-[90px]
           w-full 

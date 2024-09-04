@@ -1,23 +1,15 @@
-import { useState } from "react";
-
-export const ProductQty = () => {
-  const [qty, setQty] = useState<number>(1);
-
-  const increment = () => {
-    setQty((prev) => (prev >= 100 ? prev : prev + 1));
-  };
-
-  const decrement = () => {
-    setQty((prev) => (prev <= 1 ? prev : prev - 1));
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 1 && value <= 100) {
-      setQty(value);
-    }
-  };
-
+interface ProductQtyProps {
+  qty: number;
+  incrementQty: () => void;
+  decrementQty: () => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+export const ProductQty = ({
+  qty,
+  decrementQty,
+  incrementQty,
+  handleChange,
+}: ProductQtyProps) => {
   return (
     <div
       className="
@@ -30,7 +22,7 @@ export const ProductQty = () => {
           px-5
         "
     >
-      <button onClick={decrement} className="text-black/25">
+      <button onClick={() => decrementQty()} className="text-black/25">
         -
       </button>
       <input
@@ -45,7 +37,7 @@ export const ProductQty = () => {
             text-subtitle
           "
       />
-      <button onClick={increment} className="text-black/25">
+      <button onClick={() => incrementQty()} className="text-black/25">
         +
       </button>
     </div>
