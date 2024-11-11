@@ -6,7 +6,7 @@ import { RootState } from "../../../features/store";
 export const CartIcon = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { length: cartItemCount } = useSelector(
-    (state: RootState) => state.cart.items
+    (state: RootState) => state.cart.items,
   );
 
   const toggleModal = () => {
@@ -20,7 +20,7 @@ export const CartIcon = () => {
     <>
       <button onClick={toggleModal} className="relative">
         <img
-          src="/src/assets/shared/desktop/icon-cart.svg"
+          src="/assets/shared/desktop/icon-cart.svg"
           alt="Cart Icon"
           className="cursor-pointer"
         />

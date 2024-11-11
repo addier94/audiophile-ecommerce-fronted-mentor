@@ -20,17 +20,17 @@ export const Product2 = () => {
     >
       <img
         className="absolute inset-0 h-full w-full object-cover -z-10 sm:hidden"
-        src="/src/assets/home/mobile/image-speaker-zx7.jpg"
+        src="/assets/home/mobile/image-speaker-zx7.jpg"
         alt="speaker image"
       />
       <img
         className="absolute inset-0 h-full w-full object-cover -z-10 hidden sm:block lg:hidden"
-        src="/src/assets/home/tablet/image-speaker-zx7.jpg"
+        src="/assets/home/tablet/image-speaker-zx7.jpg"
         alt="speaker image"
       />
       <img
         className="absolute inset-0 h-full w-full object-cover -z-10 sm:hidden lg:block"
-        src="/src/assets/home/desktop/image-speaker-zx7.jpg"
+        src="/assets/home/desktop/image-speaker-zx7.jpg"
         alt="speaker image"
       />
       <h4

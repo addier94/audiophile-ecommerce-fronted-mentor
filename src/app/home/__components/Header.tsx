@@ -40,7 +40,7 @@ export const Header = () => {
               lg:h-[110%]
               lg:-mt-10
             "
-            src="/src/assets/home/mobile/image-header.jpg"
+            src="/assets/home/mobile/image-header.jpg"
             alt="Header Image"
           />
           <article

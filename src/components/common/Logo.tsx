@@ -6,7 +6,7 @@ export const Logo = ({ className }: { className?: string }) => {
     <Link to="/">
       <img
         className={clsx("cursor-pointer", className)}
-        src="/src/assets/shared/desktop/logo.svg"
+        src="/assets/shared/desktop/logo.svg"
         alt="Logo"
       />
     </Link>

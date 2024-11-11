@@ -1,28 +1,29 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/common/Footer/Footer";
 import { Navbar } from "./components/common/Navbar/Navbar";
-import { Home } from "./pages/home/page";
-import { CategoryId } from "./pages/categoryId/page";
-import { ProductSlug } from "./pages/productSlug/page";
+import { Home } from "./app/home/page";
+import { CategoryId } from "./app/categoryId/page";
+import { ProductSlug } from "./app/productSlug/page";
+import { Provider } from "react-redux";
+import store from "./features/store";
+import NotFound from "./components/common/NotFound";
+import WithLayout from "./components/common/Layout";
+
+const HomeWithLayout = WithLayout(Home);
 
 export default function AppRouter() {
   return (
-    <div
-      className="
-        min-h-screen
-        flex
-        flex-col
-        overflow-hidden
-      "
-    >
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:categoryName" element={<CategoryId />} />
-        <Route path="/product/:productSlug" element={<ProductSlug />} />
-      </Routes>
-      {/* <Outlet /> */}
-      <Footer />
-    </div>
+    <Router>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<HomeWithLayout />} />
+          {/* <Route path="/products/:category" element={<CategoryId />} /> */}
+          {/* <Route path="/product/:productSlug" element={<ProductSlug />} /> */}
+          {/* Catch-all route for undefined paths */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {/* <Outlet /> */}
+      </Provider>
+    </Router>
   );
 }

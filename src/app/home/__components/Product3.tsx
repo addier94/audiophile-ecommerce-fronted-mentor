@@ -69,7 +69,7 @@ const ResponsiveImage = () => {
             object-cover
             sm:hidden
           "
-        src="/src/assets/home/mobile/image-earphones-yx1.jpg"
+        src="/assets/home/mobile/image-earphones-yx1.jpg"
         alt="earphones image"
       />
       <img
@@ -83,7 +83,7 @@ const ResponsiveImage = () => {
             sm:block
             lg:hidden
           "
-        src="/src/assets/home/tablet/image-earphones-yx1.jpg"
+        src="/assets/home/tablet/image-earphones-yx1.jpg"
         alt="earphones image"
       />
       <img
@@ -96,7 +96,7 @@ const ResponsiveImage = () => {
             hidden
             lg:block
           "
-        src="/src/assets/home/desktop/image-earphones-yx1.jpg"
+        src="/assets/home/desktop/image-earphones-yx1.jpg"
         alt="earphones image"
       />
     </>

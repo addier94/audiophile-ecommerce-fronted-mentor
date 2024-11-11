@@ -1,12 +1,18 @@
 import { useEffect } from "react";
 import { CategoriesList } from "./CategoriesList";
+import { Product } from "../../../typescript/product";
 
 interface AsideNavbarProps {
   isOpen: boolean;
   closeMenu: () => void;
+  categories: Product[] | null;
 }
 
-export const AsideNavbar = ({ isOpen, closeMenu }: AsideNavbarProps) => {
+export const AsideNavbar = ({
+  isOpen,
+  closeMenu,
+  categories,
+}: AsideNavbarProps) => {
   useEffect(() => {
     const body = document.body;
 
@@ -18,7 +24,7 @@ export const AsideNavbar = ({ isOpen, closeMenu }: AsideNavbarProps) => {
         "before:fixed",
         "before:inset-0",
         "before:bg-black/70",
-        "before:z-10"
+        "before:z-10",
       );
     };
 
@@ -41,7 +47,11 @@ export const AsideNavbar = ({ isOpen, closeMenu }: AsideNavbarProps) => {
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
     >
-      <CategoriesList className="px-6 py-8" closeMenu={closeMenu} />
+      <CategoriesList
+        categories={categories}
+        className="px-6 py-8"
+        closeMenu={closeMenu}
+      />
     </article>
   );
 };

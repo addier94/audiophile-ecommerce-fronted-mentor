@@ -1,8 +1,12 @@
+import { Product } from "../../../typescript/product";
 import Container from "../Container";
 import { Logo } from "../Logo";
 import { NavItem } from "../Navbar/NavItem";
 
-export const Footer = () => {
+interface FooterProps {
+  categories: Product[];
+}
+export const Footer = ({ categories }: FooterProps) => {
   return (
     <footer
       className="
@@ -50,11 +54,11 @@ export const Footer = () => {
           <Logo />
         </figure>
         <NavItem
+          categories={categories}
           className="
             col-span-12
             row-span-1
             lg:col-span-6
-
             flex
             flex-col
             gap-4

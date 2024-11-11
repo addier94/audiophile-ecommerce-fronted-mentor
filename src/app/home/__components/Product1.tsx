@@ -3,27 +3,24 @@ import Button from "../../../components/common/Button";
 export const Product1 = () => {
   return (
     <article
-      className="
-      h-[600px]
-      sm:h-[720px]
-      lg:h-[560px]
-      bg-primary
-      flex
-      flex-col
-      items-center
-      lg:flex-row
-      mb-4
-      rounded-md
-      overflow-hidden
-    "
+      className=" 
+        h-[600px] 
+        sm:h-[720px] 
+        lg:h-[560px] 
+        bg-primary 
+        flex flex-col 
+        items-center 
+        lg:flex-row 
+        mb-4 
+        rounded-md 
+        overflow-hidden "
     >
       <section
         className="
-          flex-1
-          relative
-          w-full
-          h-full
-        "
+        flex-1 
+        relative 
+        w-full 
+        h-full"
       >
         <div
           className="
@@ -48,7 +45,7 @@ export const Product1 = () => {
             after:bg-contain
             after:content-[']
             after:bg-center
-            after:bg-[url('/src/assets/home/desktop/pattern-circles.svg')]
+            after:bg-[url('/assets/home/desktop/pattern-circles.svg')]
             after:top-[-84%]
             after:left-[-120%]
             after:w-[340%]
@@ -65,7 +62,7 @@ export const Product1 = () => {
             z-10
             w-full
           "
-            src="/src/assets/home/mobile/image-speaker-zx9.png"
+            src="/assets/home/mobile/image-speaker-zx9.png"
           />
         </div>
       </section>

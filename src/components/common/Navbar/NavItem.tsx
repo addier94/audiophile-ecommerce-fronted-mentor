@@ -1,11 +1,10 @@
 import clsx from "clsx";
-
-import { getNavList } from "../../../actions/getNavList";
 import { Product } from "../../../typescript/product";
 import { NavLink } from "react-router-dom";
 
 interface NavItemProps {
   className?: string;
+  categories: Product[];
 }
 
 const css = `
@@ -14,9 +13,7 @@ const css = `
   hover:text-primary
 `;
 
-export const NavItem = ({ className }: NavItemProps) => {
-  const categories: Product[] = getNavList();
-
+export const NavItem = ({ className, categories }: NavItemProps) => {
   return (
     <ul
       className={clsx(
@@ -25,7 +22,7 @@ export const NavItem = ({ className }: NavItemProps) => {
           text-white 
           list-none 
           text-subtitle
-        `
+        `,
       )}
     >
       <NavLink
@@ -34,9 +31,10 @@ export const NavItem = ({ className }: NavItemProps) => {
       >
         Home
       </NavLink>
-      {categories.map((product) => (
-        <NavItemLink key={product.id} {...product} />
-      ))}
+      {categories &&
+        categories.map((product) => (
+          <NavItemLink key={product.id} {...product} />
+        ))}
     </ul>
   );
 };
@@ -45,7 +43,7 @@ const NavItemLink = ({ category }: Product) => {
   return (
     <li>
       <NavLink
-        to={`/category/${category}`}
+        to={`/products/${category}`}
         className={({ isActive }) => clsx(css, isActive && "text-primary")}
       >
         {category}
