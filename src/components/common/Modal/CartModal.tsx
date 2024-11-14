@@ -1,4 +1,6 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Button from "../Button";
 import { RootState } from "../../../features/store";
 import {
@@ -8,7 +10,6 @@ import {
   incrementProductQty,
 } from "../../../features/cartSlice";
 import { helpers } from "../../../utils/helpers";
-import { useCallback } from "react";
 
 interface CartModalProps {
   isOpen: boolean;
@@ -87,7 +88,7 @@ const CartFooter = ({ total }: { total: number }) => (
 
 export const CartModal = ({ isOpen }: CartModalProps) => {
   const { items, totalAmount, totalQuantity } = useSelector(
-    (state: RootState) => state.cart
+    (state: RootState) => state.cart,
   );
   const dispatch = useDispatch();
 

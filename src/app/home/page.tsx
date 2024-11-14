@@ -10,29 +10,34 @@ import { Product } from "../../typescript/product";
 import dataService from "../../utils/DataService";
 
 export const Home = () => {
-  const [categories, setCategories] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [uniqueCategories, setUniqueCategories] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch categories data when the component mounts
+  // Fetch allProducts data when the component mounts
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  // Function to fetch categories data from the service
+  // Function to fetch allProducts data from the service
   const fetchCategories = async () => {
     try {
-      const data = await dataService.getAllData();
-      setCategories(data);
+      const [productData, categoryData] = await Promise.all([
+        dataService.getAllData(),
+        dataService.getUniqueCategories(),
+      ]);
+
+      setAllProducts(productData);
+      setUniqueCategories(categoryData);
     } catch (err) {
-      setError("Failed to load categories");
+      setError("Failed to load data");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Display loading or error message if necessary
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -42,16 +47,16 @@ export const Home = () => {
         <Header />
         <Container>
           <CategoriesList
-            categories={categories}
+            categories={uniqueCategories}
             className="
             py-8
             sm:py-12
           "
           />
-          {/* <Product1 /> */}
-          <Product2 />
-          <Product3 />
-          {/* <BestGear className="py-24" /> */}
+          <Product1 product={allProducts[5]} />
+          <Product2 product={allProducts[4]} />
+          <Product3 product={allProducts[0]} />
+          <BestGear className="py-24" />
         </Container>
       </main>
     </>

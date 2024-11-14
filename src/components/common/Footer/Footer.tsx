@@ -142,16 +142,10 @@ const SocialNetworks = () => {
         justify-center
         gap-5"
     >
+      <img src="/assets/shared/desktop/icon-facebook.svg" alt="Facebook Icon" />
+      <img src="/assets/shared/desktop/icon-twitter.svg" alt="Twitter Icon" />
       <img
-        src="/src/assets/shared/desktop/icon-facebook.svg"
-        alt="Facebook Icon"
-      />
-      <img
-        src="/src/assets/shared/desktop/icon-twitter.svg"
-        alt="Twitter Icon"
-      />
-      <img
-        src="/src/assets/shared/desktop/icon-instagram.svg"
+        src="/assets/shared/desktop/icon-instagram.svg"
         alt="Instagram Icon"
       />
     </div>

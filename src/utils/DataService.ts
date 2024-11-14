@@ -1,6 +1,5 @@
-// src/utils/DataService.ts
-import { helpers } from "../utils/helpers";
 import { Product } from "../typescript/product";
+import { helpers } from "./helpers";
 
 class DataService {
   private cachedData: Product[] | null = null;
@@ -15,13 +14,8 @@ class DataService {
       const response = await fetch("/assets/data.json");
       const jsonData: Product[] = await response.json();
 
-      // Process data to create a unique set of categories
-      const allCategories = new Map<string, Product>();
-      for (const product of jsonData) {
-        allCategories.set(helpers.slug(product.category), product);
-      }
-
-      this.cachedData = Array.from(allCategories.values());
+      // Cache all products without filtering by category
+      this.cachedData = jsonData;
       return this.cachedData;
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -34,6 +28,27 @@ class DataService {
     return await this.fetchData();
   }
 
+  // Get unique categories with properties
+  public async getUniqueCategories(): Promise<Product[]> {
+    const data = await this.fetchData();
+    const uniqueCategoriesMap = new Map<string, Product>();
+
+    data.forEach((product) => {
+      const categoryKey = helpers.slug(product.category);
+      if (!uniqueCategoriesMap.has(categoryKey)) {
+        uniqueCategoriesMap.set(categoryKey, product);
+      }
+    });
+
+    return Array.from(uniqueCategoriesMap.values());
+  }
+
+  // Retrieve products belonging to a specific category
+  public async getProductsByCategory(category: string): Promise<Product[]> {
+    const data = await this.fetchData();
+    return data.filter((product) => product.category === category);
+  }
+
   // Get unique category names for filtering
   public async getCategoryNames(): Promise<string[]> {
     const data = await this.fetchData();
@@ -42,9 +57,9 @@ class DataService {
   }
 
   // Get a product by slug
-  public async getProductBySlug(slug: string): Promise<Product | undefined> {
+  public async getProductById(id: string): Promise<Product | undefined> {
     const data = await this.fetchData();
-    return data.find((product) => product.slug === slug);
+    return data.find((product) => product.id.toString() === id);
   }
 }
 

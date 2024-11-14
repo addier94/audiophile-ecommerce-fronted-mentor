@@ -1,27 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/common/Button";
+import { Product } from "../../../typescript/product";
 
-export const Product3 = () => {
+interface Product3Props {
+  product: Product;
+}
+
+export const Product3 = ({ product }: Product3Props) => {
+  const navigate = useNavigate();
+
   return (
-    <article
-      className="
-      h-[424px]
-      sm:h-[320px]
-      flex
-      flex-col
-      gap-4
-
-      sm:flex-row
-      sm:gap-3
-    "
-    >
-      <section
-        className="
-        flex-1
-        relative
-        rounded-md
-        overflow-hidden
-      "
-      >
+    <article className=" h-[424px] sm:h-[320px] flex flex-col gap-4 sm:flex-row sm:gap-3 ">
+      <section className=" flex-1 relative rounded-md overflow-hidden ">
+        {" "}
         <ResponsiveImage />
       </section>
       <section
@@ -40,17 +31,23 @@ export const Product3 = () => {
             justify-center
             rounded-md
             gap-6
-            sm:gap-5
+            sm:gap-8
           "
         >
           <h4
             className="
               text-h4
+              uppercase
             "
           >
-            YX1 EARPHONES
+            {product.name}
           </h4>
-          <Button variant="secondary">See Product</Button>
+          <Button
+            onClick={() => navigate(`/product/${product.id}`)}
+            variant="secondary"
+          >
+            See Product
+          </Button>
         </div>
       </section>
     </article>

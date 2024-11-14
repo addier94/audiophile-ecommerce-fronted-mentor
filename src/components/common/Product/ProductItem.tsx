@@ -23,7 +23,7 @@ export const ProductItem = ({ className, product }: ProductItemProps) => {
         lg:flex-row
         lg:justify-between
       `,
-        className
+        className,
       )}
     >
       <section>
@@ -104,7 +104,7 @@ export const ProductItem = ({ className, product }: ProductItemProps) => {
           </p>
           <div className="text-center lg:text-left">
             <Button
-              onClick={() => navigate(`/product/${product.slug}`)}
+              onClick={() => navigate(`/product/${product.id}`)}
               variant="primary"
             >
               See Product
@@ -130,7 +130,7 @@ const ResponseImage = ({ className, image }: ResponseImageProps) => {
           `
             sm:hidden
           `,
-          className
+          className,
         )}
       />
       <img
@@ -142,7 +142,7 @@ const ResponseImage = ({ className, image }: ResponseImageProps) => {
             sm:block
             lg:hidden
           `,
-          className
+          className,
         )}
       />
       <img
@@ -153,7 +153,7 @@ const ResponseImage = ({ className, image }: ResponseImageProps) => {
             hidden 
             lg:block
           `,
-          className
+          className,
         )}
       />
     </>

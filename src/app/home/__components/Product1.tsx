@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/common/Button";
+import { Product } from "../../../typescript/product";
 
-export const Product1 = () => {
+interface Product1Props {
+  product: Product;
+}
+
+export const Product1 = ({ product }: Product1Props) => {
+  const navigate = useNavigate();
+
   return (
     <article
       className=" 
@@ -24,21 +32,21 @@ export const Product1 = () => {
       >
         <div
           className="
-            w-[172px] 
-            h-[207px]
+            w-[272px] 
+            h-[307px]
             absolute
             left-1/2
             top-1/2
             -translate-x-1/2
-            -translate-y-1/2
+            -translate-y-1/3
 
-            sm:w-[197px]
-            sm:h-[237px]
+            sm:w-[397px]
+            sm:h-[437px]
 
             lg:left-[58%]
-            lg:-translate-y-[41%]
-            lg:w-[410px]
-            lg:h-[493px]
+            lg:-translate-y-[15%]
+            lg:w-[610px]
+            lg:h-[693px]
 
             after:absolute
             after:bg-no-repeat
@@ -58,11 +66,11 @@ export const Product1 = () => {
         >
           <img
             className="
-            relative
-            z-10
-            w-full
-          "
-            src="/assets/home/mobile/image-speaker-zx9.png"
+              relative
+              z-10
+              w-full
+            "
+            src={product.categoryImage.png}
           />
         </div>
       </section>
@@ -97,10 +105,10 @@ export const Product1 = () => {
             lg:text-h1
             text-center
             lg:text-start
+            uppercase
           "
           >
-            ZX9 <br />
-            SPEAKER
+            {product.name}
           </h2>
           <p
             className="
@@ -111,10 +119,13 @@ export const Product1 = () => {
             lg:ml-0
           "
           >
-            Upgrade to premium speakers that are phenomenally built to devliver
-            truly remarkable sound.
+            {product.description}
           </p>
-          <Button variant="success" className="mx-auto lg:ml-0">
+          <Button
+            onClick={() => navigate(`/product/${product.id}`)}
+            variant="success"
+            className="mx-auto lg:ml-0"
+          >
             See Product
           </Button>
         </div>

@@ -21,7 +21,7 @@ export const ProductDetail = ({ product, className }: ProductItemProps) => {
       <article
         className={clsx(
           "max-h-[724px] sm:h-[480px] lg:h-[560px] h-full flex gap-4 sm:gap-8 flex-col sm:flex-row lg:justify-between my-4",
-          className
+          className,
         )}
       >
         <ProductImage image={product.image} />

@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Footer } from "./components/common/Footer/Footer";
-import { Navbar } from "./components/common/Navbar/Navbar";
-import { Home } from "./app/home/page";
-import { CategoryId } from "./app/categoryId/page";
-import { ProductSlug } from "./app/productSlug/page";
 import { Provider } from "react-redux";
+
 import store from "./features/store";
+import { Home } from "./app/home/page";
 import NotFound from "./components/common/NotFound";
 import WithLayout from "./components/common/Layout";
+import { CategoryName } from "./app/categoryName/page";
+import { ProductId } from "./app/productId/page";
 
 const HomeWithLayout = WithLayout(Home);
+const CategoryWithLayout = WithLayout(CategoryName);
+const ProductWithLayout = WithLayout(ProductId);
 
 export default function AppRouter() {
   return (
@@ -17,8 +18,11 @@ export default function AppRouter() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<HomeWithLayout />} />
-          {/* <Route path="/products/:category" element={<CategoryId />} /> */}
-          {/* <Route path="/product/:productSlug" element={<ProductSlug />} /> */}
+          <Route
+            path="/products/:category_name"
+            element={<CategoryWithLayout />}
+          />
+          <Route path="/product/:productId" element={<ProductWithLayout />} />
           {/* Catch-all route for undefined paths */}
           <Route path="*" element={<NotFound />} />
         </Routes>

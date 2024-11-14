@@ -12,7 +12,7 @@ export const BestGear = ({ className }: { className?: string }) => {
         flex-col
         lg:flex-row-reverse
       `,
-        className
+        className,
       )}
     >
       <section
@@ -37,7 +37,7 @@ export const BestGear = ({ className }: { className?: string }) => {
               h-full
               object-cover
             "
-            src="/src/assets/shared/mobile/image-best-gear.jpg"
+            src="/assets/shared/mobile/image-best-gear.jpg"
             alt="Best Gear"
           />
         </picture>

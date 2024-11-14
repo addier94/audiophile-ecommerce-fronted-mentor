@@ -19,7 +19,7 @@ const WithLayout = <P extends object>(Component: React.ComponentType<P>) => {
     // Function to fetch categories data from the service
     const fetchCategories = async () => {
       try {
-        const data = await dataService.getAllData();
+        const data = await dataService.getUniqueCategories();
         setCategories(data);
       } catch (err) {
         setError("Failed to load categories");

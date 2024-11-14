@@ -27,7 +27,7 @@ const calculateTotals = (items: TCartItem[]) => {
       totals.totalQuantity += item.quantity;
       return totals;
     },
-    { totalQuantity: 0, totalAmount: 0 }
+    { totalQuantity: 0, totalAmount: 0 },
   );
 };
 
@@ -44,7 +44,7 @@ const updateLocalStorage = (items: TCartItem[]) => {
 const updateItemQuantity = (
   items: TCartItem[],
   id: string | number,
-  delta: number
+  delta: number,
 ) => {
   const itemIndex = items.findIndex((item) => item.id === id);
   if (itemIndex >= 0) {
@@ -68,7 +68,7 @@ const cartSlice = createSlice({
     addItemToCart: (state, action: PayloadAction<TCartItem>) => {
       const newItem = action.payload;
       const existingItemIndex = state.items.findIndex(
-        (item) => item.id === newItem.id
+        (item) => item.id === newItem.id,
       );
 
       if (existingItemIndex >= 0) {

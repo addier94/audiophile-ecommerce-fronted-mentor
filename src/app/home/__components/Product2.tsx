@@ -1,11 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/common/Button";
+import { Product } from "../../../typescript/product";
 
-export const Product2 = () => {
+interface Product2Props {
+  product: Product;
+}
+export const Product2 = ({ product }: Product2Props) => {
+  const navigate = useNavigate();
   return (
     <article
       className="
-        relative
         h-[320px]
+        relative
         w-full
         flex
         flex-col
@@ -35,12 +41,19 @@ export const Product2 = () => {
       />
       <h4
         className="
-      text-h4
-    "
+        text-h4
+        uppercase
+      "
       >
-        ZX7 SPEAKER
+        {product.name}
       </h4>
-      <Button variant="secondary">See Product</Button>
+      <Button
+        type="button"
+        onClick={() => navigate(`/product/${product.id}`)}
+        variant="secondary"
+      >
+        See Product
+      </Button>
     </article>
   );
 };
