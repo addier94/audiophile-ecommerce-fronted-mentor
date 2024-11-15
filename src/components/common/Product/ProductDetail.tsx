@@ -171,7 +171,7 @@ const MayAlsoLike = ({ others }: { others: OtherProduct[] }) => {
               key={i}
               className="
                 flex
-          sm:flex-grow
+                sm:flex-grow
                 flex-col
                 items-center
                 gap-5
